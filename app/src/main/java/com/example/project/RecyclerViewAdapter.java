@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapter.ViewHolder>{
-    private ArrayList<Mountain> mountains;
+    private ArrayList<Recipe> recipes;
     private LayoutInflater layoutInflater;
     private OnClickListener onClickListener;
 
-    RecyclerViewAdapter(Context context, ArrayList<Mountain> mountains, OnClickListener onClickListener) {
+    RecyclerViewAdapter(Context context, ArrayList<Recipe> recipes, OnClickListener onClickListener) {
         this.layoutInflater = LayoutInflater.from(context);
-        this.mountains = mountains;
+        this.recipes = recipes;
         this.onClickListener = onClickListener;
     }
     @Override
@@ -27,13 +27,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapt
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Mountain mountain = mountains.get(position);
-        holder.title.setText(mountain.toString());
+        Recipe recipe = recipes.get(position);
+        holder.title.setText(recipe.toString());
     }
 
     @Override
     public int getItemCount() {
-        return mountains.size();
+        return recipes.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -47,11 +47,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapt
 
         @Override
         public void onClick(View view) {
-            onClickListener.onClick(mountains.get(getAdapterPosition()));
+            onClickListener.onClick(recipes.get(getAdapterPosition()));
         }
     }
 
     public interface OnClickListener {
-        void onClick(Mountain items);
+        void onClick(Recipe items);
     }
 }

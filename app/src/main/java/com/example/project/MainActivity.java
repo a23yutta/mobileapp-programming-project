@@ -25,30 +25,20 @@ import java.util.Scanner;
 public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
     private final String JSON_URL = "https://mobprog.webug.se/json-api?login=brom";
     //private final String JSON_FILE = "mountains.json";
-    private ArrayList<Mountain> mountains = new ArrayList<Mountain>();
+    private ArrayList<Recipe> recipes = new ArrayList<Recipe>();
     private RecyclerView view;
     private RecyclerViewAdapter adapter;
 
-    @SuppressWarnings("SameParameterValue")
-    private String readFile(String fileName) {
-        try {
-            //noinspection CharsetObjectCanBeUsed
-            return new Scanner(getApplicationContext().getAssets().open(fileName), Charset.forName("UTF-8").name()).useDelimiter("\\A").next();
-        } catch (IOException e) {
-            Log.e("TAG", "Could not read file: " + fileName);
-            return null;
-        }
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        adapter = new RecyclerViewAdapter(this, mountains, new RecyclerViewAdapter.OnClickListener() {
+        adapter = new RecyclerViewAdapter(this, recipes, new RecyclerViewAdapter.OnClickListener() {
             @Override
-            public void onClick(Mountain items) {
-                Toast.makeText(MainActivity.this, mountains.toString(), Toast.LENGTH_SHORT).show();
+            public void onClick(Recipe items) {
+                Toast.makeText(MainActivity.this, recipes.toString(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -56,14 +46,6 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         view.setLayoutManager((new LinearLayoutManager(this)));
         view.setAdapter(adapter);
 
-        /*new JsonFile(this, this).execute(JSON_FILE);
-        String s = readFile("mountains.json");
-        Gson gson = new Gson();
-        Type type = new TypeToken<List<Mountain>>() {
-        }.getType();
-        mountains = gson.fromJson(s, type);
-
-         */
 
     }
     private void getJson() {
@@ -89,13 +71,13 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     @Override
     public void onPostExecute(String json) {
         Gson gson = new Gson();
-        Type type = new TypeToken<List<Mountain>>() {}.getType();
-        mountains = gson.fromJson(json, type);
-        Log.d("MainActivity", "new mountains" + mountains.size());
-        adapter = new RecyclerViewAdapter(this, mountains, new RecyclerViewAdapter.OnClickListener() {
+        Type type = new TypeToken<List<Recipe>>() {}.getType();
+        recipes = gson.fromJson(json, type);
+        Log.d("MainActivity", "new mountains" + recipes.size());
+        adapter = new RecyclerViewAdapter(this, recipes, new RecyclerViewAdapter.OnClickListener() {
             @Override
-            public void onClick(Mountain items) {
-                Toast.makeText(MainActivity.this, mountains.toString(), Toast.LENGTH_SHORT).show();
+            public void onClick(Recipe items) {
+                Toast.makeText(MainActivity.this, recipes.toString(), Toast.LENGTH_SHORT).show();
             }
         });
         view.setAdapter(adapter);

@@ -2,7 +2,7 @@ package com.example.project;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Mountain {
+public class Recipe {
     private String ID;
     private String type;
     private String company;
