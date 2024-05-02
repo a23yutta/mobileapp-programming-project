@@ -5,9 +5,9 @@
         xmlns:tools="http://schemas.android.com/tools"
         tools:context="com.example.project.MainActivity">
         <item
-            android:id="@+id/action_update_recyclerview"
+            android:id="@+id/action_open_AboutActivity"
             android:orderInCategory="100"
-            android:title="@string/update_recyclerview"
+            android:title="@string/open_aboutActivity"
             app:showAsAction="never" />
 
     </menu>

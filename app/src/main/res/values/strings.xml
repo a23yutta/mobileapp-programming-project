@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">Project</string>
-    <string name="update_recyclerview">Update</string>
-    <string name="top_desserts">Top 6 efterätter</string>
+    <string name="app_name">MyTopDesserts</string>
+    <string name="open_aboutActivity">About MyTopDesserts</string>
+    <string name="close_activity">Close</string>
+    <string name="top_desserts">Top 6 Yummy desserts </string>
+    <string name="myWebview_ContentDescription">webview</string>
+    <string name="AboutWebview_ContentDescription">webview</string>
 </resources>

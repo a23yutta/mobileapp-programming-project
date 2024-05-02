@@ -34,6 +34,6 @@ public class Recipe {
 
     @Override
     public String toString() {
-        return name;
+        return name +" ("+ time +" min)";
     }
 }
