@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Project</string>
     <string name="update_recyclerview">Update</string>
+    <string name="top_desserts">Top 6 efterätter</string>
 </resources>

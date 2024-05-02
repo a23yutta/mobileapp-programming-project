@@ -7,26 +7,29 @@ public class Recipe {
     private String type;
     private String company;
     private String category;
-    @SerializedName("cost")
-    private int feet;
+    private int cost;
     private Auxdata auxdata;
-
     private String name;
-    private String location;
-    private int size;
-
+    @SerializedName("location")
+    private String websiteName;
+    @SerializedName("size")
+    private int time;
 
 
     public String getName() {
         return name;
     }
 
-    public String getLocation() {
-        return location;
+    public String getWebsiteName() {
+        return websiteName;
     }
 
-    public int getHeight() {
-        return size;
+    public int getTime() {
+        return time;
+    }
+
+    public Auxdata getAuxdata() {
+        return auxdata;
     }
 
     @Override

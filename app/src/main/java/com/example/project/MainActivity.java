@@ -23,8 +23,7 @@ import java.util.Scanner;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
-    private final String JSON_URL = "https://mobprog.webug.se/json-api?login=brom";
-    //private final String JSON_FILE = "mountains.json";
+    private final String JSON_URL = "https://mobprog.webug.se/json-api?login=a23yutta";
     private ArrayList<Recipe> recipes = new ArrayList<Recipe>();
     private RecyclerView view;
     private RecyclerViewAdapter adapter;
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         view.setLayoutManager((new LinearLayoutManager(this)));
         view.setAdapter(adapter);
 
-
+        getJson();
     }
     private void getJson() {
         new JsonTask(this).execute(JSON_URL);
@@ -76,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         Log.d("MainActivity", "new mountains" + recipes.size());
         adapter = new RecyclerViewAdapter(this, recipes, new RecyclerViewAdapter.OnClickListener() {
             @Override
-            public void onClick(Recipe items) {
+            public void onClick(Recipe recipe) {
                 Toast.makeText(MainActivity.this, recipes.toString(), Toast.LENGTH_SHORT).show();
             }
         });
