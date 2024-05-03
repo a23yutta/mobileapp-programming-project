@@ -28,9 +28,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapt
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
-        //Recipe recipe = recipes.get(position);
-        //holder.title.setText(recipes.toString());
         holder.bind(recipes.get(position), onItemClickListener);
     }
 
@@ -42,22 +39,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapt
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView title;
-
         ViewHolder(View itemView) {
             super(itemView);
-            //itemView.setOnClickListener(this);
             title = itemView.findViewById(R.id.title);
         }
-
-       /* @Override
-        public void onClick(View view) {
-            onItemClickListener.onClick(recipes.get(getAdapterPosition()));
-        }
-
-        */
         public void bind(final Recipe recipe, final OnItemClickListener listener) {
             title.setText(recipe.toString());
-            //recipe.with(itemView.getContext()).load(recipe.imageUrl).into(image);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     listener.onItemClick(recipe);
@@ -65,7 +52,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapt
             });
         }
     }
-
 
     public interface OnItemClickListener {
         void onItemClick(Recipe items);

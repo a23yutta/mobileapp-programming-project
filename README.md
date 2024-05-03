@@ -1,42 +1,53 @@
 
 # Rapport
+Skiss/design-idé
+Bild på skiss av layout:
+![](Layout%20app-MyTopDesserts.png)
 
-**Skriv din rapport här!**
+Webbtjänst - JSON
+I Github-projektets README.md skall ni inkludera en beskrivning av de JSON-objekt som er app presenterar under rubriken Webbtjänst - JSON
+Inkludera en kodsnutt (prettyfied JSON) som innehåller ett exempel-objekt. Kom ihåg att använda Markdown code-block.
+Beskriv kortfattat vad JSON-objektets olika attribut innehåller för information. Det räcker med 1-2 meningar per attribut.
+(Attributen ID och Login behöver inte beskrivas/förklaras)
 
-_Du kan ta bort all text som finns sedan tidigare_.
+Implementationsexempel
+I Github-projektets README.md skall ni inkludera 2-3 implementationsdetaljer under rubriken
+Implementationsexempel Ni väljer själva vilka implementationsdetaljer som ni vill beskriva. Om ni har frångått er ideskiss så kan det vara lämpligt att ha med någon kommentar kring varför detta skedde.
+En implementationsdetalj skall inkludera:
+● Minst en kodsnutt (glöm inte att använda Markdown code-block) ○ Om ni t ex beskriver något som relaterar till både Java-kod och XML-kod så är det vettigt att ha två separata kodsnuttar ○ Varje kodsnutt skall ha ett unikt nummer, t ex figur 1, figur 2, osv ● En kort beskrivning som beskriver vad kodsnutt/kodsnuttarna åstakommer ● Minst en screenshot som relaterar till kodsnutt/kodsnuttarna ● Minst en länk till en relevant commit för kodsnuttarna, t ex när de skapades eller när en viktig buggfix gjordes ● Kom ihåg att referera till kodsnutt/kodsnuttar och screenshot(s) i den korta beskrivningen av
+implementationsdetaljen
 
-## Följande grundsyn gäller dugga-svar:
+Implementationsexempel VG (för de som satsar på VG) 
 
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
+Reflektion
+I Github-projektets README.md skall ni inkludera kortfattad reflektion kring projekt-uppgiften under rubriken Reflektion. Ni kan till exempel reflektera över om projektuppgiften var för svår/lätt. Om projektuppgiften
+täckte in det ni lärt er under kursen. Om ni saknade något? Om något kändes överflödigt?
+Reflektionen behöver inte vara mer än 3-4 meningar och skall inte vara längre än 15-20 meningar.
 
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
-
+MainActivity:
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
-    }
-}
+adapter = new RecyclerViewAdapter(this, recipes, new RecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Recipe recipe) {
+                Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
+                intent.putExtra("Recipe url", recipe.getAuxdata().getWiki());
+                startActivity(intent);
+                Toast.makeText(MainActivity.this, recipe.getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
+```
+RecyclerViewAdapter:
+```
+public void bind(final Recipe recipe, final OnItemClickListener listener) {
+            title.setText(recipe.toString());
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    listener.onItemClick(recipe);
+                }
+            });
+        }
 ```
 
-Bilder läggs i samma mapp som markdown-filen.
 
-![](android.png)
 
-Läs gärna:
 
-- Boulos, M.N.K., Warren, J., Gong, J. & Yue, P. (2010) Web GIS in practice VIII: HTML5 and the canvas element for interactive online mapping. International journal of health geographics 9, 14. Shin, Y. &
-- Wunsche, B.C. (2013) A smartphone-based golf simulation exercise game for supporting arthritis patients. 2013 28th International Conference of Image and Vision Computing New Zealand (IVCNZ), IEEE, pp. 459–464.
-- Wohlin, C., Runeson, P., Höst, M., Ohlsson, M.C., Regnell, B., Wesslén, A. (2012) Experimentation in Software Engineering, Berlin, Heidelberg: Springer Berlin Heidelberg.
