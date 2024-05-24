@@ -4,35 +4,25 @@ Skiss/design-idé
 Bild på skiss av layout:
 ![](Layout%20app-MyTopDesserts.png)
 
-
 Webbtjänst - JSON
-I Github-projektets README.md skall ni inkludera en beskrivning av de JSON-objekt som er app presenterar under rubriken Webbtjänst - JSON
-Inkludera en kodsnutt (prettyfied JSON) som innehåller ett exempel-objekt. Kom ihåg att använda Markdown code-block.
-Beskriv kortfattat vad JSON-objektets olika attribut innehåller för information. Det räcker med 1-2 meningar per attribut.
-(Attributen ID och Login behöver inte beskrivas/förklaras)
+
+De JSON-objekt som appen presenterar är en efterrätt, exempelvis objektet våfflor:
+```
+{"ID":"recipe1_våfflor","name":"Våfflor","type":"a23yutta","company":"","location":"Arla","category":"Efterrätt","size":45,"cost":0,"auxdata":{"wiki":"https://www.arla.se/recept/vafflor/"}}
+```
+namn: Attributet är namn på efterrätten.
+location: Attributet är webbsidan som var receptet kommer i från.
+category:Attributet är vad förslags matkategori, ex. förrätt eller efterätt.
+size: Attributet är hur lång tid det tar att laga maten.
+auxdata: Attributet är url till receptet av efterrätten.
+
 
 Implementationsexempel
-I Github-projektets README.md skall ni inkludera 2-3 implementationsdetaljer under rubriken
-Implementationsexempel Ni väljer själva vilka implementationsdetaljer som ni vill beskriva.
-Om ni har frångått er ideskiss så kan det vara lämpligt att ha med någon kommentar kring varför detta skedde.
-En implementationsdetalj skall inkludera:
-● Minst en kodsnutt (glöm inte att använda Markdown code-block) ○ Om ni 
-t ex beskriver något som relaterar till både Java-kod och XML-kod så är det vettigt att 
-ha två separata kodsnuttar ○ Varje kodsnutt skall ha ett unikt nummer, t ex figur 1, figur 2, osv ● 
-En kort beskrivning som beskriver vad kodsnutt/kodsnuttarna åstakommer ● Minst en screenshot som relaterar t<
-ill kodsnutt/kodsnuttarna ● Minst en länk till en relevant commit för kodsnuttarna, t ex när de skapades eller 
-när en viktig buggfix gjordes ● Kom ihåg att referera till kodsnutt/kodsnuttar och screenshot(s) i den korta beskrivningen av
-implementationsdetaljen
-
-Implementationsexempel VG (för de som satsar på VG) 
-
-Reflektion
-I Github-projektets README.md skall ni inkludera kortfattad reflektion kring projekt-uppgiften under rubriken Reflektion. Ni kan till exempel reflektera över om projektuppgiften var för svår/lätt. Om projektuppgiften
-täckte in det ni lärt er under kursen. Om ni saknade något? Om något kändes överflödigt?
-Reflektionen behöver inte vara mer än 3-4 meningar och skall inte vara längre än 15-20 meningar.
 
 Koden är för att kunna klicka på ett item i recyclerviewn som sedan härleder en till
-en ny activity där receptet visas i en webview. 
+en ny activity där receptet visas i en webview. Länk till commit för koden:
+https://github.com/a23yutta/mobileapp-programming-project/commit/3812681e86c24554b1a7b6bd4a3ee6a064fcfc9f#diff-79e495c61f8bb7854647329a026c10e72759ba4043e41d8781fa61dfe8212ab8
+
 Figur 1 - MainActivity:
 ```
 adapter = new RecyclerViewAdapter(this, recipes, new RecyclerViewAdapter.OnItemClickListener() {
@@ -45,6 +35,7 @@ adapter = new RecyclerViewAdapter(this, recipes, new RecyclerViewAdapter.OnItemC
             }
         });
 ```
+
 Koden för recyclerviewadapter för att kunna visa texten av items in i recyclerview eftersom det är adaptern 
 som uppdaterar och visar innehållet i recyclerviewn. Länk till commit för koden:
 https://github.com/a23yutta/mobileapp-programming-project/blob/3812681e86c24554b1a7b6bd4a3ee6a064fcfc9f/app/src/main/java/com/example/project/MainActivity.java
@@ -60,9 +51,28 @@ public void bind(final Recipe recipe, final OnItemClickListener listener) {
             });
         }
 ```
-Screenshot på WebViewActivity recept som visas i en webview i en ny aktivitet när man klickar på en item i recyclerview:
-![](Layout%20app-MyTopDesserts.png)
+Screenshot på WebViewActivity där den visar recept i en webview i en ny aktivitet när man klickar på en item i recyclerview:
+![](OnItemClick_RecipeActivity.png)
+
 Screenshot på MainActivity där den visar innehållet i recyclerview, listar vardera items namn:
-![](Layout%20app-MyTopDesserts.png)
+![](ItemTextDisplay.png)
+
+Reflektion
+
+Det var utmanande med att kunna klicka på en recyclerview item som sedan skulle vidare dirigera en
+till en ny aktivitet för att visa en webbsida. Detta var inget krav, men det kändes bra med en till 
+funktionalitet än att bara visa namnet på efterrätten. 
+
+Formatteringen av texten i MainActivity var lite utmanande också(det var inget krav)
+bara för att snygga till den lite eftersom man hela tiden fick testa sig fram för layouten.
+
+Uppgiften var lätt att realisera och täckte allt som vi hade lärt oss under kursen eftersom vi 
+uppgiften baserades eller liknar precis som en tidigare uppgift i kursen. Det kunde ha varit ett
+bättre alternativ om "close" menyn i WebViewActivity var mer synlig,
+man kan tro att man fastnar i den aktivteten.
+
+Man skulle kunna lägga till fler funktionalitet för att lösa uppgiften, det kändes som att man 
+kopierade rakt av från tidigare uppiften om RecyclerView, inte att jag klagar dock.
+
 
 
